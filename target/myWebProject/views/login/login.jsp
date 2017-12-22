@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>home</title>
+    <title>login</title>
     <%@include file="/views/common/cssandjs.jsp" %>
     <link rel="stylesheet" href="${basePath}/resources/ui/layui/css/layui.css">
     <style type="text/css">
@@ -43,7 +43,7 @@
 <body class="layui-bg-orange">
     <div class="loginDiv" >
         <%--登陆表单--%>
-        <form class="layui-form" action="" lay-filter="loginForm">
+        <form id="loginForm" class="layui-form" action="" lay-filter="loginForm">
             <legend><span class="loginTitle" style="text-align: center;">欢迎登录</span></legend>
 
             <div class="layui-form-item" style="text-align: center;">
@@ -55,7 +55,7 @@
             </div>
 
             <div class="layui-form-item" style="text-align: center;">
-                <button class="layui-btn" lay-submit="" lay-filter="demo1" style="width: 70%;">登陆</button>
+                <button class="layui-btn login-login-btn" style="width: 70%;">登陆</button>
             </div>
 
             <div class="layui-form-item" style="text-align: center;">
@@ -79,17 +79,32 @@
 //        form.render('select', 'test2'); //更新 lay-filter="test2" 所在容器内的全部 select 状态
 
         //监听提交
-        form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
-        });
+//        form.on('submit(demo1)', function(data){
+//            layer.alert(JSON.stringify(data.field), {
+//                title: '最终的提交信息'
+//            });
+//            return false;
+//        });
 
     });
 
     $(function () {
-
+        $(document).on("click",".login-login-btn",function(){
+            var username = $("#loginForm input[name=username]").val();
+            var password = $("#loginForm input[name=password]").val();
+            Utils.ajax({
+                method : "POST",
+                url : _basePath+"/login/surelogin.json",
+                data : {username:username,password:password},
+                onSuccess : function(rs) {
+                    if (rs.success) {
+                        window.location.href = _basePath+"/views/home.jsp";
+                    }else {
+                        DialogBox.alert(rs.msg);
+                    }
+                }
+            });
+        });
     });
 
 </script>

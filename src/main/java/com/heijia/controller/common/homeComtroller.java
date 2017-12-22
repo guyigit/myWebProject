@@ -13,7 +13,8 @@ import java.io.IOException;
  * Created by lihaopeng on 2017/12/20.
  */
 @Controller
-public class homeComtroller extends commonController{
+@RequestMapping("/home")
+public class homeComtroller extends commonController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView homeIndex(HttpServletRequest request, HttpServletResponse response) throws IOException{

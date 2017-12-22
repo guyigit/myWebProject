@@ -207,4 +207,19 @@
       UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP}
     where USER_ID = #{userId,jdbcType=BIGINT}
   </update>
+
+  <!--****************************************业务sql开始****************************************-->
+  <select id="selectByPrimaryKey" parameterType="map" >
+    select COUNT (*)
+    from lhp_user
+    where IS_DELETED = 0
+    <if test="username != null and username != '' ">
+      AND USERNAME = #{username}
+    </if>
+    <if test="password != null and password != '' ">
+      AND PASSWORD = #{password}
+    </if>
+  </select>
+
+  <!--****************************************业务sql结束****************************************-->
 </mapper>

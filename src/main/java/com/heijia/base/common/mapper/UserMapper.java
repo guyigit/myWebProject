@@ -1,7 +1,11 @@
 package com.heijia.base.common.mapper;
 
 import com.heijia.base.common.model.User;
+import org.springframework.stereotype.Repository;
 
+import java.util.Map;
+
+@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Long userId);
 
@@ -14,4 +18,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    int checkUser(Map<String, Object> params);
 }
