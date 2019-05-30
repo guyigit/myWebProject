@@ -12,7 +12,7 @@
     <spring.version>4.2.0.RELEASE</spring.version>
   </properties>
   <dependencies>
-    <!--测试-->
+    <!--测试--><!--测试-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
