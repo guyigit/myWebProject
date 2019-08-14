@@ -29,4 +29,8 @@ public class LoginServiceImpl implements LoginService {
         System.out.println("AAAAA");
     }
 
+    public void testB(){
+        System.out.println("BBBBBB");
+    }
+
 }
