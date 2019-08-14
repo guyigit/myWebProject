@@ -24,4 +24,9 @@ public class LoginServiceImpl implements LoginService {
     public int addUser(User user) {
         return userMapper.insertSelective(user);
     }
+
+    public void testA(){
+        System.out.println("AAAAA");
+    }
+
 }
